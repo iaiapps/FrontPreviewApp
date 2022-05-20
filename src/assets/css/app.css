@@ -1,0 +1,69 @@
+.cardijazah {
+  width: 100%;
+  overflow: auto;
+  position: relative;
+}
+.imgijazah {
+  width: 700px;
+  height: 100%;
+  overflow-x: auto;
+}
+.textijazah {
+  white-space: nowrap;
+  position: absolute;
+}
+.textkepala {
+  top: 320px;
+  left: 385px;
+}
+.textnpsn {
+  top: 375px;
+  left: 330px;
+}
+.textkab {
+  top: 400px;
+  left: 250px;
+}
+.textprov {
+  top: 427px;
+  left: 250px;
+}
+.textnamasiswa {
+  top: 455px;
+  left: 310px;
+}
+.textttl {
+  top: 480px;
+  left: 310px;
+}
+.textnamaortu {
+  top: 507px;
+  left: 310px;
+}
+.textnis {
+  top: 534px;
+  left: 310px;
+}
+.textnisn {
+  top: 560px;
+  left: 310px;
+}
+.textdate {
+  top: 730px;
+  left: 410px;
+}
+.textkepsek {
+  top: 790px;
+  left: 390px;
+}
+
+/* login menu */
+.lebar {
+  width: 700px !important;
+}
+.button-pilih {
+  width: 100px;
+}
+.rounded {
+  border-radius: 10px !important;
+}
