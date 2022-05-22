@@ -81,7 +81,7 @@ export default {
           }
         })
         .catch((error) => {
-          validation.value = error.response.data;
+          validation.value = error.response.gcmdata;
         });
     }
 
