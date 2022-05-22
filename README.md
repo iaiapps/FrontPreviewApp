@@ -1,4 +1,4 @@
-# vue-cobalagi
+# front-end preview ijazah app
 
 ## Project setup
 

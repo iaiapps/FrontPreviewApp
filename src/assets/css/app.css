@@ -1,3 +1,15 @@
+/* login menu */
+.lebar {
+  width: 700px !important;
+}
+.button-pilih {
+  width: 100px;
+}
+.rounded {
+  border-radius: 10px !important;
+}
+
+/* css ijazah */
 .cardijazah {
   width: 100%;
   overflow: auto;
@@ -11,6 +23,7 @@
 .textijazah {
   white-space: nowrap;
   position: absolute;
+  font-weight: bold;
 }
 .textkepala {
   top: 320px;
@@ -57,13 +70,70 @@
   left: 390px;
 }
 
-/* login menu */
-.lebar {
-  width: 700px !important;
+/* css nilai  */
+.textnilai {
+  white-space: nowrap;
+  position: absolute;
+  font-weight: bold;
 }
-.button-pilih {
-  width: 100px;
+.nilainamasiswa {
+  top: 167px;
+  left: 310px;
 }
-.rounded {
-  border-radius: 10px !important;
+.nilaittl {
+  top: 190px;
+  left: 310px;
+}
+.nilainis {
+  top: 213px;
+  left: 310px;
+}
+.nilainisn {
+  top: 235px;
+  left: 310px;
+}
+
+.nilaipai {
+  top: 378px;
+  left: 575px;
+}
+.nilaipkn {
+  top: 408px;
+  left: 575px;
+}
+.nilaibindo {
+  top: 437px;
+  left: 575px;
+}
+.nilaimtk {
+  top: 465px;
+  left: 575px;
+}
+.nilaiipa {
+  top: 495px;
+  left: 575px;
+}
+.nilaiips {
+  top: 525px;
+  left: 575px;
+}
+.nilaisbdp {
+  top: 585px;
+  left: 575px;
+}
+.nilaipjok {
+  top: 615px;
+  left: 575px;
+}
+.nilaimulok {
+  top: 645px;
+  left: 575px;
+}
+.nilaidate {
+  top: 810px;
+  left: 455px;
+}
+.nilaikepsek {
+  top: 880px;
+  left: 425px;
 }

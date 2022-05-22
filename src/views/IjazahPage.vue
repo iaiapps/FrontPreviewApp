@@ -24,10 +24,10 @@
             </div>
             <div class="col-12 col-lg-8 ">
                 <div class="card p-3 mb-3">
-                    <h4 class="">Nama Siswa :</h4>
+                    <h4 class="">Nama Siswa : Nama Siswa</h4>
                 </div>
                 <div class="card p-3 mb-3">
-                    <h4 class="">Status :</h4>
+                    <h4 class="">Status : Belum Terverifikasi</h4>
                 </div>
                 <div class="card p-3 cardijazah">
                     <img class="imgijazah" src="../assets/img/ijazah.png" alt="ijazah" />

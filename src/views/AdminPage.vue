@@ -2,16 +2,7 @@
     <HeaderComp></HeaderComp>
     <div class="container pt-3">
         <div class="row mb-5">
-            <div class="col-12 col-lg-4 mb-5 mb-lg-0 me-auto">
-                <div class="card p-3 mb-3">
-                    <h4 class="fw-bold">Admin</h4>
-                </div>
-
-                <div id="list-example" class="list-group fs-4">
-                    <a class="list-group-item list-group-item-action" href="#list-item-1">Home</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-2">Nilai</a>
-                </div>
-            </div>
+            <MenulistComp></MenulistComp>
             <div class="col-12 col-lg-8">
                 <div class="card p-3 mb-3">
                     <h4 class="fw-bold">Home Ijazah</h4>
@@ -29,8 +20,8 @@
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                                <td>Nama Siswanya</td>
+                                <td>Sudah Verifikasi</td>
                                 <td>
                                     <div>
                                         <button class="btn btn-primary">view</button>
@@ -50,11 +41,13 @@
 
 <script>
 import HeaderComp from '../components/HeaderComp.vue'
+import MenulistComp from '../components/MenulistComp.vue'
 
 export default {
     name: "AdminPage",
     components: {
         HeaderComp,
+        MenulistComp
     }
 }
 </script>
