@@ -18,14 +18,14 @@ const routes = [
     component: LoginPage,
   },
   {
-    path: "/ijazah",
-    name: "IjazahPage",
-    component: IjazahPage,
-  },
-  {
     path: "/admin",
     name: "AdminPage",
     component: AdminPage,
+  },
+  {
+    path: "/ijazah/:id",
+    name: "IjazahPage",
+    component: IjazahPage,
   },
   {
     path: "/adminnilai",
@@ -33,7 +33,7 @@ const routes = [
     component: AdminnilaiPage,
   },
   {
-    path: "/nilai",
+    path: "/nilai/:id",
     name: "NilaiPage",
     component: NilaiPage,
   },
