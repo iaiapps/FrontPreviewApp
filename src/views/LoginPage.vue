@@ -60,7 +60,7 @@ export default {
         isAdmin: ""
       },
       loginFailed: false,
-      id:""
+      id: ""
     }
   },
   methods: {
@@ -68,7 +68,6 @@ export default {
       localStorage.setItem("localData", JSON.stringify(this.localSave))
     },
     authLogic(results) {
-      // this.localSave = JSON.parse(localStorage.getItem("localData"))
       if (results.isAdmin == true) {
         return this.$router.push({
           name: "AdminPage",
@@ -77,7 +76,7 @@ export default {
         return this.$router.push({
           name: "IjazahPage",
           params: {
-            id:this.id
+            id: this.id-1
           }
         })
       } else {
@@ -93,11 +92,11 @@ export default {
         password: this.user.password
       }).then((result) => {
         const results = result.data
-        console.log(results)
+        //console.log(results)
         this.localSave.token = results.token
         this.localSave.isAdmin = results.isAdmin
         this.id = results.data.id
-        // console.log(this.id)
+
         this.saveToLocal()
         this.authLogic(results)
 

@@ -64,9 +64,9 @@
             </div>
         </div>
     </div>
-    <!-- <button v-on:click="tombolverified">verrrr</button> -->
+    <!-- <button v-on:click="cek">cekkkk</button> -->
     <FooterComp></FooterComp>
-    <ModalEditComp></ModalEditComp>
+    <ModalEditComp v-bind:url="url" v-bind:token="token" v-bind:nis="nis" v-bind:nisn="nisn" v-on:clickSave="getDataIjazah"></ModalEditComp>
     <ModalVerIjazah v-bind:url="url" v-on:clickVerified="tombolverified"></ModalVerIjazah>
 </template>
 
@@ -92,10 +92,15 @@ export default {
             student: "",
             userId: this.$route.params.id,
             isAdmin: "",
-            token: ""
+            token: "",
+            nis:"",
+            nisn:"",
         }
     },
     methods: {
+        // cek(){
+        //     console.log(this.$route.params.id)
+        // },
         getLocal() {
             const saveData = JSON.parse(localStorage.getItem("localData"));
             this.token = saveData.token;
@@ -109,6 +114,8 @@ export default {
             }).then((result) => {
                 const results = result.data.data;
                 this.student = results;
+                this.nis = results.nis;
+                this.nisn = results.nisn;
                 console.log(results);
             }).catch((err) => {
                 console.log(err)
@@ -122,7 +129,7 @@ export default {
     mounted() {
         this.getLocal();
         this.getDataIjazah();
-        
+
     }
 }
 </script>

@@ -23,7 +23,7 @@ const routes = [
     component: AdminPage,
   },
   {
-    path: "/ijazah/:id",
+    path: "/ijazah",
     name: "IjazahPage",
     component: IjazahPage,
   },
