@@ -1,5 +1,6 @@
 # front-end preview ijazah app
 
+Simple configuration
 ## Project setup
 
 ```

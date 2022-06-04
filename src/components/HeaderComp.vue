@@ -7,9 +7,7 @@
                 </a>
             </ul>
             <div>
-                <router-link to="/">
-                    <a class="btn btn-light" href="#">Logout</a>
-                </router-link>
+                <button class="btn btn-light" v-on:click="deleteLocalData">Logout</button>
             </div>
         </div>
     </nav>
@@ -18,5 +16,13 @@
 <script>
 export default {
     name: 'HeaderComp',
+    methods: {
+        deleteLocalData() {
+            localStorage.clear();
+            this.$router.push({
+                name: "LoginPage"
+            })
+        },
+    }
 }
 </script>

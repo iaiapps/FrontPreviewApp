@@ -2,15 +2,19 @@
   <div class="container d-flex justify-content-center mt-5">
     <div class="card p-3 rounded shadow col-12 col-sm-6">
       <div class="text-center bg-light p-3">
-        <h4><b>Login Aplikasi Preview Ijazah </b></h4>
+        <h4>
+          <b>Login Aplikasi Preview Ijazah</b>
+        </h4>
         <h5>SDIT Harapan Umat Jember</h5>
       </div>
       <hr />
-      <form @submit.prevent="login">
+      <Transition>
+        <div v-if="loginFailed" class="mt-2 alert alert-danger">email atau password salah</div>
+      </Transition>
+
+      <form v-on:submit.prevent="login">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
           <input
             type="email"
             v-model="user.email"
@@ -19,9 +23,7 @@
             aria-describedby="emailHelp"
           />
         </div>
-        <div v-if="validation.email" class="mt-2 alert alert-danger">
-          {{ validation.email[0] }}
-        </div>
+        <!-- <div v-if="validation.email" class="mt-2 alert alert-danger">{{ validation.email[0] }}</div> -->
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input
@@ -31,9 +33,7 @@
             id="exampleInputPassword1"
           />
         </div>
-        <div v-if="validation.password" class="mt-2 alert alert-danger">
-          {{ validation.password[0] }}
-        </div>
+        <!-- <div v-if="validation.password" class="mt-2 alert alert-danger">{{ validation.password[0] }}</div> -->
 
         <button type="submit" class="btn btn-primary w-100">Login</button>
       </form>
@@ -42,55 +42,71 @@
 </template>
 
 <script>
-import { reactive, ref } from "vue";
-import { useRouter } from "vue-router";
+// import { reactive, ref } from "vue";
+// import router from "vue-router";
 import axios from "axios";
 
 export default {
-  setup() {
-    const router = useRouter();
-    const user = reactive({
-      email: "",
-      password: "",
-    });
-    const validation = ref([]);
-    const loginFailed = ref(null);
-
-    function login() {
-      let email = user.email;
-      let password = user.password;
-
-      axios
-        .post("http://localhost:8000/api/login", {
-          email,
-          password,
+  name: "loginPage",
+  data() {
+    return {
+      url: "http://127.0.0.1:8000/api/login",
+      user: {
+        email: "",
+        password: ""
+      },
+      localSave: {
+        token: "",
+        isAdmin: ""
+      },
+      loginFailed: false,
+      id:""
+    }
+  },
+  methods: {
+    saveToLocal() {
+      localStorage.setItem("localData", JSON.stringify(this.localSave))
+    },
+    authLogic(results) {
+      // this.localSave = JSON.parse(localStorage.getItem("localData"))
+      if (results.isAdmin == true) {
+        return this.$router.push({
+          name: "AdminPage",
         })
-        .then((response) => {
-          if (response.data.isAdmin == true) {
-            localStorage.setItem("token", response.data.token);
-            return router.push({
-              name: "AdminPage",
-            });
-          } else if (response.data.isAdmin == false) {
-            localStorage.setItem("token", response.data.token);
-            return router.push({
-              name: "IjazahPage",
-            });
-          } else {
-            loginFailed.value = true;
+      } else if (results.isAdmin == false) {
+        return this.$router.push({
+          name: "IjazahPage",
+          params: {
+            id:this.id
           }
         })
-        .catch((error) => {
-          validation.value = error.response.gcmdata;
-        });
-    }
+      } else {
+        this.loginFailed = true;
+        setTimeout(() => {
+          return this.loginFailed = false;
+        }, 2500)
+      }
+    },
+    login() {
+      axios.post(`${this.url}`, {
+        email: this.user.email,
+        password: this.user.password
+      }).then((result) => {
+        const results = result.data
+        console.log(results)
+        this.localSave.token = results.token
+        this.localSave.isAdmin = results.isAdmin
+        this.id = results.data.id
+        // console.log(this.id)
+        this.saveToLocal()
+        this.authLogic(results)
 
-    return {
-      user,
-      validation,
-      loginFailed,
-      login,
-    };
+      }).catch((err) => {
+        console.log(err)
+        // this.loginStatus = "failed"
+      })
+    },
+
   },
 };
 </script>
