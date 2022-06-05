@@ -76,7 +76,7 @@ export default {
         return this.$router.push({
           name: "IjazahPage",
           params: {
-            id: this.id-1
+            id: this.id
           }
         })
       } else {
@@ -92,13 +92,13 @@ export default {
         password: this.user.password
       }).then((result) => {
         const results = result.data
-        //console.log(results)
         this.localSave.token = results.token
         this.localSave.isAdmin = results.isAdmin
-        this.id = results.data.id
+        this.id = results.data.student.id
 
         this.saveToLocal()
         this.authLogic(results)
+        // console.log(this.id)
 
       }).catch((err) => {
         console.log(err)

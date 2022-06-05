@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="card p-3 mb-3">
-                    <h4 v-if="student.isVerified == true">Status : Sudah Terverifikasi</h4>
+                    <h4 v-if="student.isVerified == true">Status : Data Sudah Diverifikasi</h4>
                     <h4 v-else>Status : Belum Terverifikasi</h4>
                 </div>
                 <div class="card p-3 cardijazah">
@@ -66,8 +66,14 @@
     </div>
     <!-- <button v-on:click="cek">cekkkk</button> -->
     <FooterComp></FooterComp>
-    <ModalEditComp v-bind:url="url" v-bind:token="token" v-bind:nis="nis" v-bind:nisn="nisn" v-on:clickSave="getDataIjazah"></ModalEditComp>
-    <ModalVerIjazah v-bind:url="url" v-on:clickVerified="tombolverified"></ModalVerIjazah>
+    <ModalEditComp
+        v-bind:url="url"
+        v-bind:token="token"
+        v-bind:nis="nis"
+        v-bind:nisn="nisn"
+        v-on:clickSave="getDataIjazah"
+    ></ModalEditComp>
+    <ModalVerIjazah v-bind:url="url" v-bind:token="token" v-on:clickVerified="tombolverified"></ModalVerIjazah>
 </template>
 
 <script>
@@ -93,8 +99,8 @@ export default {
             userId: this.$route.params.id,
             isAdmin: "",
             token: "",
-            nis:"",
-            nisn:"",
+            nis: "",
+            nisn: "",
         }
     },
     methods: {
@@ -112,7 +118,7 @@ export default {
                     "Authorization": `Bearer ${this.token}`,
                 }
             }).then((result) => {
-                const results = result.data.data;
+                const results = result.data.data.student;
                 this.student = results;
                 this.nis = results.nis;
                 this.nisn = results.nisn;
@@ -122,7 +128,7 @@ export default {
             })
         },
         tombolverified() {
-            this.student.isVerified = true
+            this.getDataIjazah()
         },
 
     },
