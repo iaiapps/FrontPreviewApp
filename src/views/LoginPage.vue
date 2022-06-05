@@ -73,6 +73,7 @@ export default {
           name: "AdminPage",
         })
       } else if (results.isAdmin == false) {
+        this.id = results.data.student.id
         return this.$router.push({
           name: "IjazahPage",
           params: {
@@ -94,11 +95,10 @@ export default {
         const results = result.data
         this.localSave.token = results.token
         this.localSave.isAdmin = results.isAdmin
-        this.id = results.data.student.id
 
         this.saveToLocal()
         this.authLogic(results)
-        // console.log(this.id)
+        console.log(results)
 
       }).catch((err) => {
         console.log(err)
