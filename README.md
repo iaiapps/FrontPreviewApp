@@ -1,6 +1,7 @@
-# front-end preview ijazah app
+# front-end preview ijazah app | ver. 1.0.0
 
 Simple configuration
+
 ## Project setup
 
 ```

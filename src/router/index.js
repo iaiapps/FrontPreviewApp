@@ -3,7 +3,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import LoginPage from "../views/LoginPage.vue";
 import IjazahPage from "../views/IjazahPage.vue";
 import AdminPage from "../views/AdminPage.vue";
-import AdminnilaiPage from "../views/AdminnilaiPage.vue";
+import AdminNilaiPage from "../views/AdminNilaiPage.vue";
 import NilaiPage from "../views/NilaiPage.vue";
 
 const routes = [
@@ -29,8 +29,8 @@ const routes = [
   },
   {
     path: "/adminnilai",
-    name: "AdminnilaiPage",
-    component: AdminnilaiPage,
+    name: "AdminNilaiPage",
+    component: AdminNilaiPage,
   },
   {
     path: "/nilai/:id",
