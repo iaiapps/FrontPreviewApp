@@ -47,7 +47,7 @@
                <p class="textnilai nilaisbdp">{{ score.b1 }}</p>
                <p class="textnilai nilaipjok">{{ score.b2 }}</p>
                <!-- nilai mulok -->
-               <!-- <p class="textnilai nilaimulok">{{score.b3a}}</p> -->
+               <p class="textnilai nilaimulok">{{ score.b3a }}</p>
                <p class="textnilai nilaidate">Jember, Juni</p>
                <p class="textnilai nilaikepsek">Elly Nuzulianti, S.S</p>
             </div>

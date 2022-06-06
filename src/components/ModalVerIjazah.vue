@@ -23,7 +23,7 @@
                   v-on:click="verIjazah"
                   data-bs-dismiss="modal"
                >Setuju</button>
-               <button v-on:click="cek">cek</button>
+               <!-- <button v-on:click="cek">cek</button> -->
             </div>
          </div>
       </div>

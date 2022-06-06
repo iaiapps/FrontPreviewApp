@@ -29,7 +29,7 @@
                <div class="mb-3">
                   <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                   <input
-                     type="date"
+                     type="text"
                      class="form-control"
                      id="tanggal_lahir"
                      v-model="edit.dateBirth"

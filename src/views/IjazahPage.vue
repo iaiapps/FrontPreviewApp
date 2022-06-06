@@ -104,9 +104,7 @@ export default {
       }
    },
    methods: {
-      // cek(){
-      //     console.log(this.$route.params.id)
-      // },
+
       getLocal() {
          const saveData = JSON.parse(localStorage.getItem("localData"));
          this.token = saveData.token;
@@ -122,7 +120,7 @@ export default {
             this.student = results;
             this.nis = results.nis;
             this.nisn = results.nisn;
-            console.log(results);
+            // console.log(results);
          }).catch((err) => {
             console.log(err)
          })
