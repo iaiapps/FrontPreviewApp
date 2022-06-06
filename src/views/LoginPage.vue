@@ -1,12 +1,18 @@
 <template>
-   <div class="container d-flex justify-content-center mt-5">
-      <div class="card p-3 rounded shadow col-12 col-sm-6">
-         <div class="text-center bg-light p-3">
+   <div class="d-flex flex-column pt-5 background full align-items-center">
+      <div class="card p-3 rounded shadow col-11 col-sm-4 bg-light position-relative">
+         <div class="text-center">
+            <img
+               src="../assets/img/logo.png"
+               alt="logo"
+               class="logoo bg-white rounded-circle p-2 mb-2"
+            />
             <h4>
                <b>Login Aplikasi Preview Ijazah</b>
             </h4>
             <h5>SDIT Harapan Umat Jember</h5>
          </div>
+
          <hr />
          <Transition>
             <div v-if="loginFailed" class="mt-2 alert alert-danger">email atau password salah</div>

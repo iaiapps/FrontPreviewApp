@@ -1,7 +1,20 @@
-/* login menu */
-.lebar {
-  width: 700px !important;
+html,
+body {
+  height: 100% !important;
 }
+
+/* css App */
+#app {
+  height: 100%;
+}
+.full {
+  height: 100%;
+}
+
+/* login menu */
+/* .lebar {
+  width: 700px !important;
+} */
 .button-pilih {
   width: 100px;
 }
@@ -17,8 +30,15 @@
 .v-leave-to {
   opacity: 0;
 }
-
-
+.background {
+  background-color: #b7dbf3;
+  background-image: linear-gradient(135deg, #e0edf6 0%, #c0d9f1 100%);
+  background-repeat: no-repeat;
+}
+.logoo {
+  width: 100px;
+  height: 100px;
+}
 
 /* css ijazah */
 .cardijazah {
