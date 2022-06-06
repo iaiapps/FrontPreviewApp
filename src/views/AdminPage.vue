@@ -3,9 +3,9 @@
    <div class="container pt-3">
       <div class="row mb-5">
          <MenulistComp></MenulistComp>
-         <div class="col-12 col-lg-8">
+         <div class="col-12 col-lg-9">
             <div class="card p-3 mb-3">
-               <h4 class="fw-bold">Home Ijazah</h4>
+               <h4 class="fw-bold">Halaman Ijazah</h4>
             </div>
             <div class="card p-3">
                <table class="table">
@@ -24,20 +24,17 @@
                         <td>
                            <span
                               v-if="student.isVerified == true"
-                              class="text-primary"
+                              class="bg-success text-white p-1 rounded"
                            >Sudah Verifikasi</span>
-                           <span v-else class="text-danger">Belum Verifikasi</span>
+                           <span v-else class="bg-secondary text-white p-1 rounded">Belum Verifikasi</span>
                         </td>
                         <td>
                            <div>
                               <router-link
                                  v-bind:to="{ name: 'IjazahPage', params: { id: student.id } }"
                               >
-                                 <button class="btn btn-primary">view</button>
+                                 <button class="btn btn-primary btn-sm">lihat ijazah</button>
                               </router-link>
-
-                              <!-- <button class="btn btn-primary">edit</button> -->
-                              <!-- <button class="btn btn-primary">hapus</button> -->
                            </div>
                         </td>
                      </tr>

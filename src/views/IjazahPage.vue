@@ -2,50 +2,52 @@
    <HeaderComp></HeaderComp>
    <div class="container pt-3">
       <div class="row mb-3">
-         <div class="col-12 col-lg-4 mb-5 mb-lg-0 me-auto">
-            <h2 class="fw-bold">Preview Ijazah SDIT Harapan Umat Jember.</h2>
-            <h3 class>Tahun Ajaran 2021/2022</h3>
+         <div class="col-12 col-lg-4 mb-3 mb-lg-0 me-auto">
+            <div class="card p-3 shadow">
+               <h2 class="fw-bold">Preview Ijazah SDIT Harapan Umat Jember.</h2>
+               <h3 class>Tahun Ajaran 2021/2022</h3>
 
-            <p class="mt-3 fs-5">Cek Identitas Ijazah</p>
-            <p class="fs-5">
-               jika benar klik
-               <b>tombol verifikasi</b> , jika ada yang perlu
-               diedit klik tombol
-               <b>edit identitas</b>
-            </p>
-            <div class="d-flex flex-wrap">
-               <a
-                  class="btn btn-primary me-2 mb-2 mb-sm-0"
-                  data-bs-toggle="modal"
-                  data-bs-target="#ModalIjazah"
-                  href="#"
-               >Verifikasi Ijazah</a>
+               <p class="mt-3 fs-5">Cek Identitas Ijazah</p>
+               <p class="fs-5">
+                  jika benar klik
+                  <b>tombol verifikasi</b> , jika ada yang perlu
+                  diedit klik tombol
+                  <b>edit identitas</b>
+               </p>
+               <div class="btn-group">
+                  <a
+                     class="btn btn-primary me-2 mb-2 mb-sm-0"
+                     data-bs-toggle="modal"
+                     data-bs-target="#ModalIjazah"
+                     href="#"
+                  >Verifikasi Ijazah</a>
 
-               <button
-                  type="button"
-                  class="btn btn-outline-secondary mb-2 mb-sm-0"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-               >Edit Identitas</button>
+                  <button
+                     type="button"
+                     class="btn btn-outline-secondary mb-2 mb-sm-0"
+                     data-bs-toggle="modal"
+                     data-bs-target="#exampleModal"
+                  >Edit Identitas</button>
+               </div>
+               <small class="mt-3 d-block">*scroll/sentuh gambar untuk menggeser</small>
+               <router-link
+                  class="btn btn-primary w-100 mt-3"
+                  v-if="isAdmin == true"
+                  v-bind:to="{ name: 'AdminPage' }"
+               >kembali ke halaman admin</router-link>
             </div>
-            <small class="mt-3 d-block">*scroll/sentuh gambar untuk menggeser</small>
-            <router-link
-               class="btn btn-primary w-100 mt-3"
-               v-if="isAdmin == true"
-               v-bind:to="{ name: 'AdminPage' }"
-            >kembali ke halaman admin</router-link>
          </div>
 
          <div class="col-12 col-lg-8">
-            <div class="card p-3 mb-3">
+            <div class="card p-3 mb-3 shadow">
                <h4 class>Nama Siswa : {{ student.name }}</h4>
             </div>
 
-            <div class="card p-3 mb-3">
+            <div class="card p-3 mb-3 shadow">
                <h4 v-if="student.isVerified == true">Status : Data Sudah Diverifikasi</h4>
                <h4 v-else>Status : Belum Terverifikasi</h4>
             </div>
-            <div class="card p-3 cardijazah">
+            <div class="card p-3 cardijazah shadow">
                <img class="imgijazah" src="../assets/img/ijazah.png" alt="ijazah" />
                <p class="textijazah textkepala">SDIT Harapan Umat Jember</p>
                <p class="textijazah textnpsn">20554128</p>

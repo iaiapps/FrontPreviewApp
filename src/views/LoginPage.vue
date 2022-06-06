@@ -1,5 +1,5 @@
 <template>
-   <div class="d-flex flex-column pt-5 background full align-items-center">
+   <div class="d-flex flex-column pt-5 background full align-items-center vh-100">
       <div class="card p-3 rounded shadow col-11 col-sm-4 bg-light position-relative">
          <div class="text-center">
             <img
