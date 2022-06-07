@@ -29,7 +29,7 @@
                <div class="mb-3">
                   <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                   <input
-                     type="text"
+                     type="date"
                      class="form-control"
                      id="tanggal_lahir"
                      v-model="edit.dateBirth"
@@ -82,7 +82,7 @@ export default {
          axios.defaults.headers.common[
             "Authorization"
          ] = `Bearer ${this.token}`;
-         axios.put(`${this.url}/${this.userId}`, {
+         axios.put(`${this.url}/student/${this.userId}`, {
             name: this.edit.name,
             place_of_birth: this.edit.placeBirth,
             date_of_birth: this.edit.dateBirth,
@@ -91,11 +91,7 @@ export default {
             nisn: this.nisn,
             // isUpdate: true,
 
-         }).then((result) => {
-            const results = result.data.data;
-            // this.student = results;
-            console.log(results);
-         }).catch((err) => {
+         }).then().catch((err) => {
             console.log(err)
          })
       },

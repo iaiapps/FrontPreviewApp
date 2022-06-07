@@ -7,7 +7,7 @@
             <div class="card p-3 mb-3">
                <h4 class="fw-bold">Halaman Ijazah</h4>
             </div>
-            <div class="card p-3">
+            <div class="card p-3 table-responsive">
                <table class="table">
                   <thead>
                      <tr>
@@ -24,9 +24,12 @@
                         <td>
                            <span
                               v-if="student.isVerified == true"
-                              class="bg-success text-white p-1 rounded"
+                              class="d-block bg-success text-white text-center p-1 rounded"
                            >Sudah Verifikasi</span>
-                           <span v-else class="bg-secondary text-white p-1 rounded">Belum Verifikasi</span>
+                           <span
+                              v-else
+                              class="d-block text-center bg-secondary text-white p-1 rounded"
+                           >Belum Verifikasi</span>
                         </td>
                         <td>
                            <div>
@@ -57,9 +60,12 @@ export default {
       HeaderComp,
       MenulistComp
    },
+   props: {
+      url: String,
+   },
    data() {
       return {
-         url: "http://127.0.0.1:8000/api/student",
+         // url: "http://127.0.0.1:8000/api/student",
          token: "",
          isAdmin: "",
          students: "",
@@ -72,7 +78,7 @@ export default {
          this.isAdmin = saveData.isAdmin;
       },
       showIjazah() {
-         axios.get(this.url, {
+         axios.get(`${this.url}/student`, {
             headers: {
                "Authorization": `Bearer ${this.token}`,
             }

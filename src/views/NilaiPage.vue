@@ -74,9 +74,12 @@ export default {
       FooterComp,
       ModalEditNilaiComp,
    },
+   props: {
+      url: String
+   },
    data() {
       return {
-         url: "http://127.0.0.1:8000/api/student",
+         // url: "http://127.0.0.1:8000/api/student",
          isAdmin: "",
          token: "",
          students: "",
@@ -92,7 +95,7 @@ export default {
          this.isAdmin = saveData.isAdmin;
       },
       showListStudent() {
-         axios.get(`${this.url}/${this.routeIndex}`, {
+         axios.get(`${this.url}/student/${this.routeIndex}`, {
             headers: {
                "Authorization": `Bearer ${this.token}`,
             }

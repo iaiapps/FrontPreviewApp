@@ -1,6 +1,6 @@
 <template>
-   <div class="d-flex flex-column pt-5 background full align-items-center vh-100">
-      <div class="card p-3 rounded shadow col-11 col-sm-4 bg-light position-relative">
+   <div class="d-flex flex-column pt-5 background full align-items-center vh-100 p-2">
+      <div class="card p-3 rounded shadow col-12 col-md-4 bg-light position-relative">
          <div class="text-center">
             <img
                src="../assets/img/logo.png"
@@ -15,7 +15,10 @@
 
          <hr />
          <Transition>
-            <div v-if="loginFailed" class="mt-2 alert alert-danger">email atau password salah</div>
+            <div
+               v-if="loginFailed"
+               class="p-2 bg-danger bg-gradient my-3 text-white"
+            >email atau password salah</div>
          </Transition>
 
          <form v-on:submit.prevent="login">
@@ -55,9 +58,12 @@ import axios from "axios";
 
 export default {
    name: "loginPage",
+   props:
+      { url: String }
+   ,
    data() {
       return {
-         url: "http://127.0.0.1:8000/api/login",
+         // url: "http://127.0.0.1:8000/api/login",
          user: {
             email: "",
             password: ""
@@ -95,7 +101,7 @@ export default {
          }
       },
       login() {
-         axios.post(`${this.url}`, {
+         axios.post(`${this.url}/login`, {
             email: this.user.email,
             password: this.user.password
          }).then((result) => {
@@ -114,5 +120,8 @@ export default {
       },
 
    },
+   // mounted() {
+   //    console.log(this.url)
+   // }
 };
 </script>

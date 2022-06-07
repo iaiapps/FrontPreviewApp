@@ -49,9 +49,12 @@ export default {
       HeaderComp,
       MenulistComp
    },
+   props: {
+      url: String
+   },
    data() {
       return {
-         url: "http://127.0.0.1:8000/api/student",
+         // url: "http://127.0.0.1:8000/api/student",
          token: "",
          students: "",
       }
@@ -63,7 +66,7 @@ export default {
          this.isAdmin = saveData.isAdmin;
       },
       showListStudent() {
-         axios.get(this.url, {
+         axios.get(`${this.url}/student`, {
             headers: {
                "Authorization": `Bearer ${this.token}`,
             }

@@ -94,9 +94,12 @@ export default {
       ModalEditComp,
       ModalVerIjazah,
    },
+   props: {
+      url: String
+   },
    data() {
       return {
-         url: "http://127.0.0.1:8000/api/student",
+         // url: "http://127.0.0.1:8000/api/student",
          student: "",
          userId: this.$route.params.id,
          isAdmin: "",
@@ -113,7 +116,7 @@ export default {
          this.isAdmin = saveData.isAdmin;
       },
       getDataIjazah() {
-         axios.get(`${this.url}/${this.userId}`, {
+         axios.get(`${this.url}/student/${this.userId}`, {
             headers: {
                "Authorization": `Bearer ${this.token}`,
             }
@@ -135,7 +138,7 @@ export default {
    mounted() {
       this.getLocal();
       this.getDataIjazah();
-
+      // console.log(this.token)
    }
 }
 </script>

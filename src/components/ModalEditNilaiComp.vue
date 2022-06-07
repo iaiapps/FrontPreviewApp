@@ -148,7 +148,7 @@ export default {
          axios.defaults.headers.common[
             "Authorization"
          ] = `Bearer ${this.token}`;
-         axios.put(`${this.url}/${this.userId}/edit_score`, {
+         axios.put(`${this.url}/student/${this.userId}/edit_score`, {
             a1: this.a1,
             a2: this.a2,
             a3: this.a3,
@@ -159,11 +159,7 @@ export default {
             b2: this.b2,
             // b3a: this.b3a,
 
-         }).then((result) => {
-            const results = result.data.data;
-            // this.student = results;
-            console.log(results);
-         }).catch((err) => {
+         }).then().catch((err) => {
             console.log(err)
          })
       },
