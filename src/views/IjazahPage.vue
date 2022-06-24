@@ -4,19 +4,37 @@
       <div class="row mb-3">
          <div class="col-12 col-lg-4 mb-3 mb-lg-0 me-auto">
             <div class="card p-3 shadow">
-               <h2 class="fw-bold">Preview Ijazah SDIT Harapan Umat Jember.</h2>
-               <h3 class>Tahun Ajaran 2021/2022</h3>
+               <router-link
+                  class="btn btn-primary w-100 mb-3"
+                  v-if="isAdmin == true"
+                  v-bind:to="{ name: 'AdminPage' }"
+               >kembali ke halaman admin</router-link>
 
-               <p class="mt-3 fs-5">Cek Identitas Ijazah</p>
-               <p class="fs-5">
-                  jika benar klik
-                  <b>tombol verifikasi</b> , jika ada yang perlu
-                  diedit klik tombol
-                  <b>edit identitas</b>
+               <h3 class="fw-bold">Preview Ijazah SDIT Harapan Umat Jember.</h3>
+               <h4 class>Tahun Ajaran 2021/2022</h4>
+               <p class="mt-3">
+                  data berikut berdasarkan akte ananda,
+                  jika data sudah benar klik upload
+                  <b>tanda tangan</b> sebagai bukti persetujuan lalu klik tombol
+                  <b>tombol verifikasi</b>
                </p>
+               <p>
+                  jika terdapat
+                  <b>data yang berbeda</b> silahkan hubungi wali kelas terlebih dahulu
+               </p>
+
+               <hr />
+               <UploadTtd></UploadTtd>
+               <hr />
                <div class="btn-group">
+                  <!-- <button
+                     type="button"
+                     class="btn btn-outline-secondary mb-2 mb-sm-0"
+                     data-bs-toggle="modal"
+                     data-bs-target="#ModalTtd"
+                  >upload tanda tangan</button>-->
                   <a
-                     class="btn btn-primary me-2 mb-2 mb-sm-0"
+                     class="btn btn-primary"
                      data-bs-toggle="modal"
                      data-bs-target="#ModalIjazah"
                      href="#"
@@ -24,17 +42,22 @@
 
                   <button
                      type="button"
-                     class="btn btn-outline-secondary mb-2 mb-sm-0"
+                     class="btn btn-outline-secondary"
                      data-bs-toggle="modal"
-                     data-bs-target="#exampleModal"
+                     data-bs-target="#ModalVerval"
+                     v-if="isAdmin == true"
                   >Edit Identitas</button>
                </div>
-               <small class="mt-3 d-block">*scroll/sentuh gambar untuk menggeser</small>
-               <router-link
-                  class="btn btn-primary w-100 mt-3"
-                  v-if="isAdmin == true"
-                  v-bind:to="{ name: 'AdminPage' }"
-               >kembali ke halaman admin</router-link>
+
+               <hr />
+               <div>
+                  <p class="fw-bold">Catatan Persetujuan</p>
+                  <p>
+                     Jika dikemudian hari terjadi
+                     <b>kesalahan atau perubahan data</b> setelah verifikasi data, maka resiko
+                     <b>ditanggung Orang Tua / Wali</b> siswa-siswi yang bersangkutan. Sekian dari kami, mohon maaf dan terima kasih
+                  </p>
+               </div>
             </div>
          </div>
 
@@ -47,6 +70,7 @@
                <h4 v-if="student.isVerified == true">Status : Data Sudah Diverifikasi</h4>
                <h4 v-else>Status : Belum Terverifikasi</h4>
             </div>
+
             <div class="card p-3 cardijazah shadow">
                <img class="imgijazah" src="../assets/img/ijazah.png" alt="ijazah" />
                <p class="textijazah textkepala">SDIT Harapan Umat Jember</p>
@@ -63,6 +87,7 @@
                <p class="textijazah textdate">Jember, Juni</p>
                <p class="textijazah textkepsek">Elly Nuzulianti, S.S</p>
             </div>
+            <!-- <small class="d-block mt-2">*scroll/sentuh gambar untuk menggeser</small> -->
          </div>
       </div>
    </div>
@@ -81,8 +106,9 @@
 <script>
 import HeaderComp from '../components/HeaderComp.vue'
 import FooterComp from '../components/FooterComp.vue'
-import ModalEditComp from '../components/ModalEditComp'
-import ModalVerIjazah from '../components/ModalVerIjazah'
+import ModalEditComp from '../components/ModalEditComp.vue'
+import ModalVerIjazah from '../components/ModalVerIjazah.vue'
+import UploadTtd from '../components/UploadTtd.vue'
 import axios from 'axios'
 
 
@@ -93,6 +119,7 @@ export default {
       FooterComp,
       ModalEditComp,
       ModalVerIjazah,
+      UploadTtd
    },
    props: {
       url: String
