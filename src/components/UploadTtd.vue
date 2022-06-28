@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent="UploadImage" @submit.prevent="handleSubmit">
+  <form v-on:submit.prevent="handleSubmit">
     <div class="mb-3">
       <img :src="imageUrl" v-show="imageUrl" width="300" />
       <br />
@@ -9,7 +9,7 @@
         type="file"
         accept="image/*"
         id="formFile"
-        @change="handleImgSelected"
+        v-on:change="handleImgSelected"
       />
     </div>
     <button class="btn btn-outline-secondary w-100 mb-3">Upload</button>
