@@ -50,7 +50,7 @@ export default {
          console.log(this.token)
       },
       isVerified() {
-         axios.get(`${this.url}/${this.routeIndex}/verified`, {
+         axios.get(`${this.url}/student/${this.routeIndex}/verified`, {
             headers: {
                "Authorization": `Bearer ${this.token}`,
             }
