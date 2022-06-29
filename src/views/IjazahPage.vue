@@ -24,15 +24,9 @@
                </p>
 
                <hr />
-               <UploadTtd></UploadTtd>
+               <UploadTtd v-bind:url="url" v-bind:token="token" v-bind:signature="signature"></UploadTtd>
                <hr />
                <div class="btn-group">
-                  <!-- <button
-                     type="button"
-                     class="btn btn-outline-secondary mb-2 mb-sm-0"
-                     data-bs-toggle="modal"
-                     data-bs-target="#ModalTtd"
-                  >upload tanda tangan</button>-->
                   <a
                      class="btn btn-primary"
                      data-bs-toggle="modal"
@@ -133,6 +127,7 @@ export default {
          token: "",
          nis: "",
          nisn: "",
+         signature: ""
       }
    },
    methods: {
@@ -152,7 +147,10 @@ export default {
             this.student = results;
             this.nis = results.nis;
             this.nisn = results.nisn;
-            // console.log(results);
+            if (results.signature != null) {
+               this.signature = `http://127.0.0.1:8000/storage/tandatangan/${results.signature}`
+            }
+            console.log(results);
          }).catch((err) => {
             console.log(err)
          })
