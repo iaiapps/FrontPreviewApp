@@ -1,9 +1,13 @@
 <template>
    <form v-on:submit.prevent="handleSubmit">
       <div class="mb-3">
-         <label for="formFile" class="form-label">Upload file ttd disini</label>
+         <label for="formFile" class="form-label">
+            Upload file
+            <b>tanda tangan</b> disini (pilih gambar lalu klik upload)
+         </label>
+         <img :src="imageUrl" v-show="imageUrl" class="img-fluid" />
          <input
-            class="form-control"
+            class="form-control mt-3"
             type="file"
             accept="image/*"
             id="formFile"
@@ -11,8 +15,7 @@
          />
       </div>
       <div class="text-center">
-         <img :src="imageUrl" v-show="imageUrl" class="img-fluid" />
-         <img :src="signature" class="img-fluid" />
+         <img :src="signature" class="img-fluid" v-show="signature" />
       </div>
       <br />
       <button class="btn btn-outline-secondary w-100 mb-3">Upload</button>
@@ -48,6 +51,7 @@ export default {
             .post(`http://127.0.0.1:8000/api/upload_ttd/${id}`, data)
             .then((response) => {
                console.log(response.data);
+               location.reload()
             });
       }
 

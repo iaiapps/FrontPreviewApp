@@ -26,19 +26,25 @@
                <hr />
                <UploadTtd v-bind:url="url" v-bind:token="token" v-bind:signature="signature"></UploadTtd>
                <hr />
+               <p>
+                  Setelah upload
+                  <b>tanda tangan</b> klik tombol
+                  <b>verifikasi</b> berikut (akan muncul jika telah upload tanda tangan)
+               </p>
                <div class="btn-group">
                   <a
                      class="btn btn-primary"
                      data-bs-toggle="modal"
-                     data-bs-target="#ModalIjazah"
+                     data-bs-target="#ModalVerval"
                      href="#"
+                     v-show="signature"
                   >Verifikasi Ijazah</a>
 
                   <button
                      type="button"
                      class="btn btn-outline-secondary"
                      data-bs-toggle="modal"
-                     data-bs-target="#ModalVerval"
+                     data-bs-target="#ModalEdit"
                      v-if="isAdmin == true"
                   >Edit Identitas</button>
                </div>
