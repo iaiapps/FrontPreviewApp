@@ -1,0 +1,61 @@
+<template>
+   <div class="mb-3">
+      <label for="formFile" class="form-label">Upload file ttd disini</label>
+      <input class="form-control" type="file" id="formFile" v-on:change="pickImage" />
+   </div>
+   <button v-on:click="tombolPost" class="btn btn-outline-secondary w-100 mb-3">upload</button>
+
+   <div id="thumbnail" class="text-center">
+      <img v-bind:src="signature" alt="signatureImage" class="img-fluid" />
+      <!-- <img v-bind:src="signaturee" class="img-fluid" v-if="signaturee" /> -->
+   </div>
+</template>
+
+<script>
+import axios from "axios"
+
+export default {
+   name: "UploadTtd",
+   emits: ['uploadImg'],
+   props: [
+      "url",
+      "token",
+      "signature"
+   ],
+   data() {
+      return {
+         verified: "",
+         routeIndex: this.$route.params.id,
+         image: "",
+         // signaturee: ""
+      }
+   },
+   methods: {
+      pickImage(e) {
+         this.image = e.target.files[0]
+      },
+
+      postImage() {
+         // axios.defaults.headers.common["Authorization"] = `Bearer ${this.token}`;
+         const formData = new FormData()
+         formData.append('image', this.image, this.image.name)
+
+         axios.post(`${this.url}/upload_ttd/${this.routeIndex}`,
+            formData, {
+            headers: {
+               'Content-Type': 'multipart/form-data',
+            }
+         }).then((result) => {
+            // const cek = result.data.message
+            // this.signaturee = `http://127.0.0.1:8000/storage/tandatangan/${result.data.data.signature}`
+            console.log(result)
+         }).catch((err) => { console.log(err) })
+      },
+
+      tombolPost() {
+         this.postImage()
+         this.$emit("uploadImg")
+      }
+   },
+}
+</script>

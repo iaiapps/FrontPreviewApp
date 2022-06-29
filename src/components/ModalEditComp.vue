@@ -1,15 +1,15 @@
 <template>
    <div
       class="modal fade"
-      id="exampleModal"
+      id="ModalEdit"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="ModalEditLabel"
       aria-hidden="true"
    >
       <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Edit Identitas</h5>
+               <h5 class="modal-title" id="ModalEditLabel">Edit Identitas</h5>
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -79,9 +79,7 @@ export default {
    },
    methods: {
       editDataIjazah() {
-         axios.defaults.headers.common[
-            "Authorization"
-         ] = `Bearer ${this.token}`;
+         axios.defaults.headers.common["Authorization"] = `Bearer ${this.token}`;
          axios.put(`${this.url}/student/${this.userId}`, {
             name: this.edit.name,
             place_of_birth: this.edit.placeBirth,

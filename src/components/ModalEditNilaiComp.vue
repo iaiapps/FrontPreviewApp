@@ -25,82 +25,97 @@
                      <tr>
                         <td>1</td>
                         <td>
-                           <label for="nama" class="form-label">PAI</label>
+                           <label for="nama1" class="form-label">PAI</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="a1" />
+                           <input type="number" class="form-control" id="nama1" v-model="a1" />
                         </td>
                      </tr>
                      <tr>
                         <td>2</td>
                         <td>
-                           <label for="nama" class="form-label">PKn</label>
+                           <label for="nama2" class="form-label">PKn</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="a2" />
+                           <input type="number" class="form-control" id="nama2" v-model="a2" />
                         </td>
                      </tr>
                      <tr>
                         <td>3</td>
                         <td>
-                           <label for="nama" class="form-label">B. Indo</label>
+                           <label for="nama3" class="form-label">B. Indo</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="a3" />
+                           <input type="number" class="form-control" id="nama3" v-model="a3" />
                         </td>
                      </tr>
                      <tr>
                         <td>4</td>
                         <td>
-                           <label for="nama" class="form-label">MTK</label>
+                           <label for="nama4" class="form-label">MTK</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="a4" />
+                           <input type="number" class="form-control" id="nama4" v-model="a4" />
                         </td>
                      </tr>
                      <tr>
                         <td>5</td>
                         <td>
-                           <label for="nama" class="form-label">IPA</label>
+                           <label for="nama5" class="form-label">IPA</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="a5" />
+                           <input type="number" class="form-control" id="nama5" v-model="a5" />
                         </td>
                      </tr>
                      <tr>
                         <td>6</td>
                         <td>
-                           <label for="nama" class="form-label">IPS</label>
+                           <label for="nama6" class="form-label">IPS</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="a6" />
+                           <input type="number" class="form-control" id="nama6" v-model="a6" />
                         </td>
                      </tr>
                      <tr>
                         <td>7</td>
                         <td>
-                           <label for="nama" class="form-label">SBDP</label>
+                           <label for="nama7" class="form-label">SBDP</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="b1" />
+                           <input type="number" class="form-control" id="nama7" v-model="b1" />
                         </td>
                      </tr>
                      <tr>
                         <td>8</td>
                         <td>
-                           <label for="nama" class="form-label">PJOK</label>
+                           <label for="nama8" class="form-label">PJOK</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="b2" />
+                           <input type="number" class="form-control" id="nama8" v-model="b2" />
                         </td>
                      </tr>
                      <tr>
                         <td>9</td>
                         <td>
-                           <label for="nama" class="form-label">Mulok</label>
+                           <label for="nama9" class="form-label9">Bahasa Jawa</label>
                         </td>
                         <td>
-                           <input type="number" class="form-control" id="nama" v-model="b3a" />
+                           <input type="number" class="form-control" id="nama9" v-model="b3a" />
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>10</td>
+                        <td>
+                           <label for="nama0" class="form-label">Rata-rata</label>
+                        </td>
+                        <td>
+                           <input
+                              type="number"
+                              class="form-control"
+                              id="nama0"
+                              v-model="b3b"
+                              disabled
+                           />
                         </td>
                      </tr>
                   </tbody>
@@ -115,6 +130,8 @@
                   v-on:click="buttonSave"
                >Simpan</button>
             </div>
+
+            <button v-on:click="rerata">ss</button>
          </div>
       </div>
    </div>
@@ -131,6 +148,7 @@ export default {
    ],
    data() {
       return {
+         userId: this.$route.params.id,
          a1: "",
          a2: "",
          a3: "",
@@ -140,10 +158,17 @@ export default {
          b1: "",
          b2: "",
          b3a: "",
-         userId: this.$route.params.id,
+         b3b: ""
       }
    },
    methods: {
+      rerata() {
+         const arr = [this.a1, this.a2]
+
+         const hasil = arr / arr.length
+         console.log(hasil)
+      },
+
       editNilaiIjazah() {
          axios.defaults.headers.common[
             "Authorization"
@@ -157,7 +182,7 @@ export default {
             a6: this.a6,
             b1: this.b1,
             b2: this.b2,
-            // b3a: this.b3a,
+            b3a: this.b3a,
 
          }).then().catch((err) => {
             console.log(err)
@@ -167,6 +192,12 @@ export default {
          this.editNilaiIjazah()
          this.$emit("clickSave")
       }
+   },
+   computed: {
+
+   },
+   updated() {
+      this.rerata()
    }
 }
 </script>

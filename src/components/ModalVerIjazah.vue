@@ -1,15 +1,15 @@
 <template>
    <div
       class="modal fade"
-      id="ModalIjazah"
+      id="ModalVerval"
       tabindex="-1"
-      aria-labelledby="ModalVerval"
+      aria-labelledby="ModalVervalLabel"
       aria-hidden="true"
    >
       <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="ModalVerval">Edit Identitas</h5>
+               <h5 class="modal-title" id="ModalVervalLabel">Edit Identitas</h5>
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">

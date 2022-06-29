@@ -4,8 +4,13 @@
       <div class="row mb-3">
          <div class="col-12 col-lg-4 mb-3 mb-lg-0 me-auto">
             <div class="card shadow p-3">
-               <h2 class="fw-bold">Preview Nilai Ijazah SDIT Harapan Umat Jember.</h2>
-               <h3 class>Tahun Ajaran 2021/2022</h3>
+               <router-link
+                  class="btn btn-primary w-100 mb-3"
+                  v-if="isAdmin == true"
+                  v-bind:to="{ name: 'AdminNilaiPage' }"
+               >kembali ke halaman admin</router-link>
+               <h3 class="fw-bold">Preview Nilai Ijazah SDIT Harapan Umat Jember.</h3>
+               <h4 class>Tahun Ajaran 2021/2022</h4>
 
                <p class="mt-3 fs-5">Cek Nilai Ijazah</p>
 
@@ -17,12 +22,8 @@
                      data-bs-target="#ModalNilai"
                   >Edit Nilai Ijazah</button>
                </div>
-               <small class="mt-3 d-block">*scroll/sentuh gambar untuk menggeser</small>
-               <router-link
-                  class="btn btn-primary w-100 mt-3"
-                  v-if="isAdmin == true"
-                  v-bind:to="{ name: 'AdminNilaiPage' }"
-               >kembali ke halaman admin</router-link>
+               <!-- <small class="mt-3 d-block">*scroll/sentuh gambar untuk menggeser</small> -->
+               <button class="mt-3 btn btn-outline-primary" v-on:click="print">print</button>
             </div>
          </div>
          <div class="col-12 col-lg-8">
@@ -30,7 +31,7 @@
                <h4 class>Nama Siswa : {{ students.name }}</h4>
             </div>
 
-            <div class="card p-3 cardijazah shadow">
+            <div id="printarea" class="card p-3 cardijazah shadow">
                <img class="imgijazah" src="../assets/img/nilai.png" alt="ijazah" />
                <p class="textnilai nilainamasiswa">{{ students.name }}</p>
                <p
@@ -49,7 +50,12 @@
                <p class="textnilai nilaisbdp">{{ score.b1 }}</p>
                <p class="textnilai nilaipjok">{{ score.b2 }}</p>
                <!-- nilai mulok -->
+               <p class="textnilai bahasajawa">Bahasa Jawa</p>
                <p class="textnilai nilaimulok">{{ score.b3a }}</p>
+
+               <!-- rata-rata -->
+               <p class="textnilai ratarata">{{ score.b3b }}</p>
+
                <p class="textnilai nilaidate">Jember, Juni</p>
                <p class="textnilai nilaikepsek">Elly Nuzulianti, S.S</p>
             </div>
@@ -66,6 +72,7 @@ import FooterComp from '../components/FooterComp.vue'
 import ModalEditNilaiComp from '../components/ModalEditNilaiComp.vue'
 import axios from 'axios'
 
+// const printarea = document.getElementById("printarea");
 
 export default {
    name: "IjazahPage",
@@ -107,7 +114,9 @@ export default {
          }).catch((err) => {
             console.log(err)
          })
-
+      },
+      print() {
+         window.print()
       }
    },
    mounted() {

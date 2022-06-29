@@ -154,10 +154,7 @@ body {
   top: 615px;
   left: 575px;
 }
-.nilaimulok {
-  top: 645px;
-  left: 575px;
-}
+
 .nilaidate {
   top: 810px;
   left: 455px;
@@ -165,4 +162,35 @@ body {
 .nilaikepsek {
   top: 880px;
   left: 425px;
+}
+
+/* bahasa jawa */
+.nilaimulok {
+  top: 675px;
+  left: 575px;
+}
+.bahasajawa {
+  top: 675px;
+  left: 160px;
+}
+
+/* ratarata */
+.ratarata {
+  top: 760px;
+  left: 575px;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printarea,
+  #printarea * {
+    visibility: visible;
+  }
+  #printarea {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }
